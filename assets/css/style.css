@@ -1,23 +1,52 @@
+
+
+#header {
+    background-color: rgb(82, 141, 209);
+    
+}
+
 .buttonBox {
     /* background-color: blueviolet; */
-    margin-top:60px;
+  
+    margin-top:160px;
 }
 
 .youtubeBox {
-    background-color: rgb(43, 226, 165);
-    margin-top:60px;
+    background-color: rgb(224, 160, 62);
+    opacity: 0.9;
+    margin-top:160px;
 }
 
 .lastChecked {
-    background-color: rgb(226, 147, 43);
-    margin-top:60px;
+    background-color: rgb(60, 190, 212);
+    opacity: 0.9;
+    margin-top:160px;
 }
 
 #genres {
     margin-left: 10px;
     margin-bottom: 10px;
+    
 }
 
 #genres:hover {
     background-color: rgb(110, 226, 43);
+    color: #1e95da;
+    font-display: auto;
+    font-weight: bolder;
+    font-family: Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    margin-top: auto;
+    padding-bottom: -30px;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #dfa1c0, 0 0 30px #e7d3dd, 0 0 40px #c7abb9, 0 0 55px #f7f2f4, 0 0 75px #e6dee2;
+}
+
+#name {
+    font-size: 80px;
+    color: #ffffff;
+    font-display: auto;
+    font-weight: bolder;
+    font-family: 'Neon', Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
 }
