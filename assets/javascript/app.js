@@ -27,8 +27,9 @@ $(document).ready(function(){
         $(".buttonBox").append(newDiv);
         newDiv.append(newButton);
         newButton.text(response.genres[i].name);
-        newButton.attr("id","genres")
-        newButton.attr("data-id",response.genres[i].id)
+        newButton.attr("id","genres");
+        newButton.addClass("col-md-12 btn btn-outline-primary");
+        newButton.attr("data-id",response.genres[i].id);
         }
 
       });

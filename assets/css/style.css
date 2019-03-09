@@ -1,5 +1,5 @@
 .buttonBox {
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
 }
 
 .youtubeBox {
@@ -8,4 +8,14 @@
 
 .lastChecked {
     background-color: rgb(226, 147, 43);
+}
+
+#genres {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+#genres {
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
