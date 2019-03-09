@@ -2,7 +2,7 @@ var APIKey = "5258a1b12eab1eb6a43101023288eacf";
 var youtubeId ="";
 var link ="";
 $(document).ready(function(){
-    $("#youtube").attr("src",link);
+   
     // Here we are building the URL we need to query the database
     var queryURL = "https://api.themoviedb.org/3/movie/now_playing?api_key="+APIKey+"&language=en-US&page=1";
     // Here we run our AJAX call to the OpenWeatherMap API
@@ -59,6 +59,6 @@ $(document).ready(function(){
             $("#youtube").attr("src",link);
            // document.getElementsByName("source").innerHTML = link;
       });
-
+     
     
 });

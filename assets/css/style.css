@@ -7,7 +7,7 @@
 
 .buttonBox {
     /* background-color: blueviolet; */
-    margin-top:160px;
+    /* margin-top:160px; */
     font-weight: bold;
     text-align: center;
 }
@@ -15,7 +15,7 @@
 .youtubeBox {
     background-color: rgb(224, 160, 62);
     /* opacity: 0.9; */
-    margin-top:160px;
+    /* margin-top:160px; */
     font-weight: bold;
     text-align: center;
 }
@@ -23,7 +23,7 @@
 .lastChecked {
     background-color: rgb(60, 190, 212);
     opacity: 0.9;
-    margin-top:160px;
+    /* margin-top:160px; */
 }
 
 .nowPlaying10 {
@@ -52,4 +52,8 @@
     font-family: 'Neon', Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
     text-align: center;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
+}
+
+#footer {
+    text-align: center;
 }
