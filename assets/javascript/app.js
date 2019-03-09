@@ -14,7 +14,7 @@ $(document).ready(function(){
       .then(function(response) {
 
         // Log the resulting object
-        console.log(response.results[0].original_language);
+        //console.log(response.results[0].original_language);
         var count =0;
         for(var i=0;i<10+count;i++)
         {
@@ -38,10 +38,10 @@ $(document).ready(function(){
 
       $(document).on("click",".nowPlaying",function(event){
         
-        console.log(event);
+        // console.log(event);
         var target = event.currentTarget.id;
         var dataId = $("#"+target).attr("data-id");
-        console.log(dataId);
+        // console.log(dataId);
         var queryURL= "https://api.themoviedb.org/3/movie/"+dataId+"/videos?api_key="+APIKey+"&language=en-US";
 
         $.ajax({
@@ -57,7 +57,6 @@ $(document).ready(function(){
             });
             
             $("#youtube").attr("src",link);
-           // document.getElementsByName("source").innerHTML = link;
       });
      
     
