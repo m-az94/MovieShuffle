@@ -7,8 +7,9 @@
 
 .buttonBox {
     /* background-color: blueviolet; */
-  
     margin-top:160px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .youtubeBox {
@@ -23,13 +24,13 @@
     margin-top:160px;
 }
 
-#genres {
+.nowPlaying10 {
     margin-left: 10px;
     margin-bottom: 10px;
     
 }
 
-#genres:hover {
+.nowPlaying10:hover {
     background-color: rgb(110, 226, 43);
     color: #1e95da;
     font-display: auto;
