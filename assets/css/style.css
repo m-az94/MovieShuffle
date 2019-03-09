@@ -14,8 +14,10 @@
 
 .youtubeBox {
     background-color: rgb(224, 160, 62);
-    opacity: 0.9;
+    /* opacity: 0.9; */
     margin-top:160px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .lastChecked {
