@@ -1,13 +1,16 @@
 .buttonBox {
     /* background-color: blueviolet; */
+    margin-top:60px;
 }
 
 .youtubeBox {
     background-color: rgb(43, 226, 165);
+    margin-top:60px;
 }
 
 .lastChecked {
     background-color: rgb(226, 147, 43);
+    margin-top:60px;
 }
 
 #genres {
@@ -15,7 +18,6 @@
     margin-bottom: 10px;
 }
 
-#genres {
-    margin-left: 10px;
-    margin-bottom: 10px;
+#genres:hover {
+    background-color: rgb(110, 226, 43);
 }
