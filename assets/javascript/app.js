@@ -112,7 +112,7 @@ function playYoutube(event) {
             //console.log(resultId);
              link= "https://www.youtube.com/embed/"+resultId+"?autoplay=1";
              $("#youtube").attr("src",link);
-             console.log("from youtube")
+             //console.log("from youtube API");
         }else{
             youtubeId = response.results[0].key; 
              link = "https://www.youtube.com/embed/"+youtubeId+"?autoplay=1";
@@ -141,10 +141,11 @@ function addButtonsWithMovieInfo(response) {
     {
             if(response.results[i].original_language==="en")   
             {
-                
+            var year =$("<div>");    
             var newDiv=$("<div>");
             var infoTitle= $("<div>");
             var infoDiv= $("<div>");
+            var poster = $("<img>");
             var newButton=$("<button>");
             $(".buttonBox").append(newDiv);
             newDiv.append(newButton);
@@ -153,9 +154,16 @@ function addButtonsWithMovieInfo(response) {
             newButton.attr("id","nowPlaying"+i);
             newButton.addClass("col-md-12 btn btn-outline-primary nowPlayingButton");
             newButton.attr("data-id",response.results[i].id);
+            
+            //These lines post a poster under movieInfo class
+            $(".movieInfo").append(poster);
+            poster.attr("src","https://image.tmdb.org/t/p/w185"+response.results[i].poster_path);
+            poster.addClass("movieInfo"+i+" overview");
+            //These lines post a title under poster in movieInfo class
             $(".movieInfo").append(infoTitle);
             infoTitle.text(response.results[i].original_title+" Storyline: ");
             infoTitle.addClass("movieInfo"+i+" overview");
+            //These lines post a movie overview under movie title in movieInfo class
             $(".movieInfo").append(infoDiv);
             infoDiv.text(response.results[i].overview);
             infoDiv.addClass("movieInfo"+i+" info overview");
@@ -168,27 +176,6 @@ function addButtonsWithMovieInfo(response) {
 
 
 }
-
-
-// function search(){
-// var count=0;
-// for(var i=0;i<10+count;i++)
-// {
-//         if(response.results[i].original_language==="en")   
-//         {
-//         var newDiv=$("<div>");
-//         var newButton=$("<button>");
-//         $(".buttonBox").append(newDiv);
-//         newDiv.append(newButton);
-//         newButton.text(response.results[i].original_title);
-//         newButton.attr("id","nowPlaying"+i);
-//         newButton.addClass("col-md-12 btn btn-outline-primary nowPlayingButton");
-//         newButton.attr("data-id",response.results[i].id);
-//         }else{
-//             count++;
-//         }
-// }
-// }
 
 
 
