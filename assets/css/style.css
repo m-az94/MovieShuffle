@@ -1,38 +1,54 @@
-
-
 #header {
     background-color: rgb(67, 98, 238);
     
 }
+.col-md-12{
+    padding-right: 0px;
+}
+
+#inputMovie, #searchButton {
+    margin-right: 15px;
+}
+
+.belowNav
+{
+    background-color: rgb(67, 98, 238);
+}
 
 .buttonBox {
-    /* background-color: blueviolet; */
+    /* background-color: blueviolet;*/
     /* margin-top:160px; */
+    font-weight: bold;
+    text-align: center;
+} 
+
+.youtubeBox {
+    /* background-color: rgb(224, 160, 62); */
+    /* opacity: 0.9; */
+    /* margin-top:160px;  */
     font-weight: bold;
     text-align: center;
 }
 
-.youtubeBox {
-    background-color: rgb(224, 160, 62);
-    /* opacity: 0.9; */
-    /* margin-top:160px; */
-    font-weight: bold;
-    text-align: center;
+.movieInfo {
+    text-align: left;
+    padding-left:37px;
+    padding-right: 15px;
 }
 
 .lastChecked {
-    background-color: rgb(60, 190, 212);
+    /* background-color: rgb(60, 190, 212); */
     opacity: 0.9;
-    /* margin-top:160px; */
+    /* margin-top:160px;  */
 }
 
-.nowPlaying10 {
+.nowPlayingButton {
     margin-left: 10px;
     margin-bottom: 10px;
-    
+    margin-top: 3px;
 }
 
-.nowPlaying10:hover {
+/* .nowPlayingButton:hover {
     background-color: rgb(110, 226, 43);
     color: #1e95da;
     font-display: auto;
@@ -42,10 +58,16 @@
     margin-top: auto;
     padding-bottom: -30px;
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #dfa1c0, 0 0 30px #e7d3dd, 0 0 40px #c7abb9, 0 0 55px #f7f2f4, 0 0 75px #e6dee2;
+} */
+
+#nowPlaying {
+    margin-left:10px;
+    /* font-size: 1.5vw; */
+    /* margin-top:122px; */
 }
 
 #name {
-    font-size: 80px;
+    font-size: 10vw;
     color: #ffffff;
     font-display: auto;
     font-weight: bolder;
@@ -56,4 +78,46 @@
 
 #footer {
     text-align: center;
+}
+
+#youtube {
+    width:55vw;
+    height:30vw;
+}
+
+.info{
+    font-weight: normal;
+}
+
+.doubleClick {
+    text-align: center;
+}
+
+
+@media only screen and (max-width:640px) {
+    /* Youtube Box For mobile phones: */
+     #youtube {
+        width:90vw;
+        height:52vw;
+    } 
+    .movieInfo {
+        text-align: left;
+        padding-left:25px;
+        padding-right: 10px;
+    }
+
+}
+
+@media only screen and (max-width:767px) {
+    /* Youtube Box For mobile phones: */
+     #youtube {
+        width:100vw;
+        height:70vw;
+    } 
+    .movieInfo {
+        text-align: left;
+        padding-left:25px;
+        padding-right: 10px;
+    }
+
 }

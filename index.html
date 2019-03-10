@@ -12,9 +12,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
     <script type="text/javascript" src="assets/javascript/app.js" ></script>
 </head>
@@ -22,34 +24,46 @@
     <div class="row">
         <div class="col-md-12">
                 <nav class="navbar navbar-expand-lg navbar-dark" id="header">
-                        <div class="col-md-2"></div>
+                        <div class="col-md-1"></div>
                         <a class="navbar-brand" id="name" href="index.html">MOVIE SHUFFLE</a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                         </button>
                         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                                <ul class="navbar-nav">
-                                  <li class="nav-item active">
-                                    <a class="nav-link" href="">Genres</a> 
-                                  </li>
-                                  <li class="nav-item">
+                                
                                   <form class="form-inline">
-                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-outline-success" type="submit">Search</button>
-                                </form>
-                                 </li>
-                                </ul>
+                                        <input class="form-control" type="search" id="inputMovie" placeholder="Search Movies" aria-label="Search">
+                                        <button class="btn btn-outline-success" id="searchButton" type="submit">Search</button>
+                                  </form>
+                               
                         </div>
-                      </nav>
-            </div>
+                 </nav>
+        </div>
     </div>
+    <div class="row belowNav">
+            <button class="btn btn-success" id="nowPlaying">Top 10 Now Playing Movies</button> 
+    </div>
+
     <div class="row">
-        <div class="col-md-2 buttonBox">Now Playing Movies</div>
-        <div class="col-md-7 youtubeBox" >Double Click On The Movie To Play Trailer
+        <div class="col-md-2 buttonBox"></div>
+        <div class="col-md-7 youtubeBox" >Click On The Movie To Play its Trailer
+            
+            <div class="row">
+                <div class="col-md-12 doubleClick">
+                If it doesn't play then double click on the movie name
+                </div>
+            </div>
+                <div class="row">
                 <div class="col-md-12">
                 <!-- <iframe  width="700" height="415" src="https://www.youtube.com/watch?v=lD-NcoXJbsU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
                 <iframe id="youtube" width="700" height="415" src="https://www.youtube.com/embed/rlR4PJn8b8I?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>     
+                </div>  
+                </div>  
+                <div class="row">
+                        <div class="col-md-12 movieInfo">
+                        </div>  
+                </div> 
+
         </div>
         <div class="col-md-3 lastChecked">Last Checked</div>
     </div>
@@ -57,10 +71,13 @@
     <div class="row">
             <div class="card col-md-12" id="footer">
                     <div class="card-body">
-                      <p class="card-text">Copyright@ 2019</p>
+                      <p class="card-text"></p>
                     </div>
                     <div class="card-footer">
-                      Movie Shuffle
+                        <div class="col-md-12">
+                            Information Contributor: TMDB
+                        </div>   
+                         Copyright@2019
                     </div>
             </div>
            
