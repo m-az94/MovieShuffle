@@ -89,7 +89,7 @@
   }
 
 .nowPlayingButton:hover {
-    background-color: #d3d0c3;
+    background-color: #dacfa2;
     color: #1e95da;
     font-display: auto;
     font-weight: bolder;
@@ -97,8 +97,12 @@
     text-align: center;
     margin-top: auto;
     padding-bottom: -30px;
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #dfa1c0, 0 0 30px #e7d3dd, 0 0 40px #c7abb9, 0 0 55px #f7f2f4, 0 0 75px #e6dee2;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #e4dfb4, 0 0 30px #dbd5b9, 0 0 40px #cfce98, 0 0 55px #cccb81, 0 0 75px #cfc886;
 } 
+
+#footer {
+    background-color: #c9c3ad;
+}
 
 #nowPlaying {
     margin-left:10px;
