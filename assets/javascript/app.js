@@ -89,17 +89,34 @@ function addNews()
             {
                 var newsDiv =$("<div>");
                 var title =$("<a>");
-                var content = $("<a>");
-                var linkURL=$("<a>");
+                var content = $("<div>");
+                var newsImage=$("<img>");
+                var publish =$("<div>");
+
+                $(".topNews").append(publish);
+                var newsDate=response.articles[i].publishedAt;
+                var momentDate = moment(newsDate,'YYYY-MM-DD');
+                publish.text(momentDate.format('LL'));
+                publish.addClass("newsDate");
+                
 
                 $(".topNews").append(newsDiv);
                 newsDiv.append(title);
-                newsDiv.addClass("newsDiv");
+                newsDiv.addClass("newsDivTitle");
                 title.text(i+1+". "+response.articles[i].title);
                 title.attr("href",response.articles[i].url);
+               
+               
+                
+                
+                $(".topNews").append(newsImage);
+                newsImage.addClass("newsImage");
+                newsImage.attr("src",response.articles[i].urlToImage);
+
                 $(".topNews").append(content);
                 content.text(response.articles[i].content);
-                content.addClass("newsDiv");
+                content.addClass("newsDivContent");
+
                 sticky();
                 
 
@@ -192,6 +209,13 @@ function addButtonsWithMovieInfo(response) {
             newButton.attr("id","nowPlaying"+i);
             newButton.addClass("col-md-12 btn btn-outline-primary nowPlayingButton");
             newButton.attr("data-id",response.results[i].id);
+            //These lines add release date of the movie
+            $(".movieInfo").append(year);
+            year.addClass("movieInfo"+i+" overview");
+            
+            const dateToStore = response.results[i].release_date;
+            const momentDate = moment(dateToStore,'YYYY-MM-DD');
+            year.text(momentDate.format('LL'));
             //These lines post a poster under movieInfo class
             $(".movieInfo").append(poster);
             poster.attr("src","https://image.tmdb.org/t/p/w185"+response.results[i].poster_path);
