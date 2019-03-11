@@ -4,6 +4,8 @@ var link ="";
 var resultId="";
 $(document).ready(function(){
         
+        addNews();
+
         $("#nowPlaying").on("click",function(event){
             event.preventDefault();
            $(".buttonBox").empty();
@@ -59,7 +61,6 @@ $(document).ready(function(){
 
         });
         
-      // searchYoutube("jurassic+galaxy");
         
 
        
@@ -67,6 +68,46 @@ $(document).ready(function(){
 
     
 });
+
+
+function addNews()
+{
+    var newsURL="https://newsapi.org/v2/everything?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
+    var topNewsURL="https://newsapi.org/v2/top-headlines?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
+    var googleTopNews="https://newsapi.org/v2/top-headlines?country=ca&apiKey=cfa7c039edef460a8f6723558e31f499";
+
+    $.ajax({
+        url: newsURL,
+        method: "GET"
+        })
+        // We store all of the retrieved data inside of an object called "response"
+        .then(function(response) {
+            console.log(response);
+            
+            
+            for(var i=0;i<20;i++)
+            {
+                var newsDiv =$("<div>");
+                var title =$("<a>");
+                var content = $("<a>");
+                var linkURL=$("<a>");
+
+                $(".topNews").append(newsDiv);
+                newsDiv.append(title);
+                newsDiv.addClass("newsDiv");
+                title.text(i+1+". "+response.articles[i].title);
+                title.attr("href",response.articles[i].url);
+                $(".topNews").append(content);
+                content.text(response.articles[i].content);
+                content.addClass("newsDiv");
+                sticky();
+                
+
+
+            }
+
+        });
+}
 
 
 function searchYoutube(search)
@@ -82,11 +123,8 @@ function searchYoutube(search)
       .then(function(response) {        
         
         resultId = response.items[0].id.videoId.toString();
-       // console.log(resultId.toString());
-        //console.log(resultY);
          
       });
-      //return resultId;
 
 }
 
@@ -154,7 +192,6 @@ function addButtonsWithMovieInfo(response) {
             newButton.attr("id","nowPlaying"+i);
             newButton.addClass("col-md-12 btn btn-outline-primary nowPlayingButton");
             newButton.attr("data-id",response.results[i].id);
-            
             //These lines post a poster under movieInfo class
             $(".movieInfo").append(poster);
             poster.attr("src","https://image.tmdb.org/t/p/w185"+response.results[i].poster_path);
@@ -178,6 +215,13 @@ function addButtonsWithMovieInfo(response) {
 }
 
 
+function sticky() {
+    if ($(".topNews").pageYOffset > sticky || $(".youtubeBox").pageYOffset > sticky ||$(".buttonBox").pageYOffset > sticky) {
+      header.classList.add("sticky");
+    } else {
+      header.classList.remove("sticky");
+    }
+  }
 
 
 /* <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
