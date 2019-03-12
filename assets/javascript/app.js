@@ -3,7 +3,11 @@ var youtubeId ="";
 var link ="";
 var resultId="";
 $(document).ready(function(){
-        
+
+         var images = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg'];
+    
+         $('#header').css({'background-image': 'url(assets/images/' + images[Math.floor(Math.random() * images.length)] + ')'});
+       
         addNews();
 
         $("#nowPlaying").on("click",function(event){
@@ -176,10 +180,6 @@ function playYoutube(event) {
         });
 
         $(".overview").hide();
-        // for(var i=0;i<10;i++)
-        // {
-        //    $(".movieInfo"+i).hide();
-        // }
         
         $(".movieInfo"+infoNumber).show();
         

@@ -1,10 +1,13 @@
-#header,.belowNav {
-    background: url(../images/moviespic.png) no-repeat center center fixed; 
+#header {
+    background: url(../images/moviespic.png) no-repeat center center; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
-    
+    background-size: cover;  
+} 
+
+.belowNav{
+    background-color: #d3d0c3;
 }
 
 .col-md-12{
