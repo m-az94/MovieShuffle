@@ -2,13 +2,20 @@ var APIKey = "5258a1b12eab1eb6a43101023288eacf";
 var youtubeId ="";
 var link ="";
 var resultId="";
+var title ="";
+
+    var newsURL="https://newsapi.org/v2/everything?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
+    var topNewsURL="https://newsapi.org/v2/top-headlines?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
+    var googleTopNews="https://newsapi.org/v2/top-headlines?country=ca&apiKey=cfa7c039edef460a8f6723558e31f499";
+    var searchTermNews="https://newsapi.org/v2/everything?q="+title+"&language=en&sortBy=relevancy&apiKey=7a70b0d355fc47d4a73c34f23bbb6db5";
+
 $(document).ready(function(){
 
          var images = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg'];
     
          $('#header').css({'background-image': 'url(assets/images/' + images[Math.floor(Math.random() * images.length)] + ')'});
        
-        addNews();
+        addNews(newsURL,".topNews");
 
         $("#nowPlaying").on("click",function(event){
             event.preventDefault();
@@ -35,8 +42,18 @@ $(document).ready(function(){
             $(document).on("click",".nowPlayingButton",function(event){
                // console.log(event);
                 playYoutube(event);
-               
-            
+                $(".topNews").empty();
+              // var movieNewsDiv =$("<div>");
+               title = event.currentTarget.value.toString().split(' ').join('+').trim();
+               searchTermNews="https://newsapi.org/v2/everything?q="+title+"&language=en&sortBy=relevancy&apiKey=7a70b0d355fc47d4a73c34f23bbb6db5";
+              // var whichButton= event.currentTarget.id.substring(10);
+              // var div =".movieInfo"+whichButton;
+               //console.log(title);
+               addNews(searchTermNews,".topNews")
+            //    $(".movieInfo").append(movieNewsDiv);
+            //    movieNewsDiv.text(addNews(searchTermNews,".movieInfo"));
+            //      movieNewsDiv.addClass("movieNews");
+                
             });
         
 
@@ -74,19 +91,16 @@ $(document).ready(function(){
 });
 
 
-function addNews()
+function addNews(news,whichDiv)
 {
-    var newsURL="https://newsapi.org/v2/everything?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
-    var topNewsURL="https://newsapi.org/v2/top-headlines?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
-    var googleTopNews="https://newsapi.org/v2/top-headlines?country=ca&apiKey=cfa7c039edef460a8f6723558e31f499";
-
+   
     $.ajax({
-        url: newsURL,
+        url: news,
         method: "GET"
         })
         // We store all of the retrieved data inside of an object called "response"
         .then(function(response) {
-            console.log(response);
+           // console.log(response);
             
             
             for(var i=0;i<20;i++)
@@ -97,27 +111,25 @@ function addNews()
                 var newsImage=$("<img>");
                 var publish =$("<div>");
 
-                $(".topNews").append(publish);
+                $(whichDiv).append(publish);
                 var newsDate=response.articles[i].publishedAt;
                 var momentDate = moment(newsDate,'YYYY-MM-DD');
                 publish.text(momentDate.format('LL'));
                 publish.addClass("newsDate");
                 
 
-                $(".topNews").append(newsDiv);
+                $(whichDiv).append(newsDiv);
                 newsDiv.append(title);
                 newsDiv.addClass("newsDivTitle");
                 title.text(i+1+". "+response.articles[i].title);
                 title.attr("href",response.articles[i].url);
                
-               
                 
-                
-                $(".topNews").append(newsImage);
+                $(whichDiv).append(newsImage);
                 newsImage.addClass("newsImage");
                 newsImage.attr("src",response.articles[i].urlToImage);
 
-                $(".topNews").append(content);
+                $(whichDiv).append(content);
                 content.text(response.articles[i].content);
                 content.addClass("newsDivContent");
 
@@ -136,7 +148,7 @@ function searchYoutube(search)
    //var resultId="";
    var APIKey = "AIzaSyBtp6rXtBjreYY-3-sZ3LntzY6ptXDnhA8";
    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=id&q="+search+"+trailer&type=video&key=" + APIKey;
-   console.log(queryURL);
+  // console.log(queryURL);
     $.ajax({
       url: queryURL,
       method: "GET"
