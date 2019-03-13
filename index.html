@@ -13,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://apis.google.com/js/api.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
@@ -55,17 +55,48 @@
             </div>
                 <div class="row">
                 <div class="col-md-12">
-                <iframe id="youtube" width="700" height="415" src="https://www.youtube.com/embed/bILE5BEyhdo?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="youtube" src="https://www.youtube.com/embed/bILE5BEyhdo?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>  
                 </div>  
                 <div class="row">
                         <div class="col-md-12 movieInfo">
                         </div>  
                 </div> 
+                <!-- maria -->
+                <!-- <div class="row movieNewsContainer">
+                        <p >Here's The Latest Scoop...</p>
+                        <div class="row movieNews"></div>
+                </div> -->
+                <!-- maria -->
 
         </div>
-        <div class="col-md-3 topNews">Lastest Entertainment News</div>
+        <div class="col-md-3 rightSide">
+
+                        <!-- chat thing -->
+                    <div class="lastChecked" id="chattingCol">
+                            <p id="chatHere">
+                                    Chat here!
+                            </p>
+                            <div class="row">
+                                    <div class="col">
+                                            <form>
+                                                    <label>
+                                                            Message:
+                                                    </label><br>
+                                                    <textarea type="text" id="inputText" ></textarea>
+                                                    <button type="submit" id="submitButton">Submit</button>
+                                            </form>
+                                    </div>
+                            </div>
+                            <div class="overflow-auto" id="messageArea">
+                            </div>
+                    </div>
+                    <!-- end chat thing -->  
+                    <div class="topNews">Lastest Entertainment News</div>
+        </div>
+       
     </div>
+   
 
     <div class="row">
             <div class="card col-md-12" id="footer">

@@ -6,6 +6,78 @@
     background-size: cover;  
 } 
 
+.rightSide {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+@font-face{
+    font-family: "Kaushan";
+    src: url("../images/font/KaushanScript-Regular.otf");
+}
+
+#chattingCol{
+    background-color: #4CAF50;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+
+#messageArea{
+    background-color:#fff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 20px;
+    border-radius: 20px;
+    /* width: 15em; */
+    height: 17em;
+    overflow: scroll;
+}
+
+#chatHere{
+    font-family: "Kaushan";
+    text-align: center;
+    font-size: 2em;
+}
+
+label{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+textarea{
+    border-radius: 10px;
+    
+}
+
+#submitButton {
+    padding: 7.5px 12.5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: rgb(17, 9, 9);
+    background-color: rgb(248, 236, 62);
+    border: none;
+    border-radius: 7.5px;
+    box-shadow: 0 4.5px #999;
+    margin-bottom: 10px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+  }
+
+  #submitButton:hover {background-color: #3e8e41}
+
+  #submitButton:active {
+    background-color: #3e8e41;
+    box-shadow: 0 2.5px #666;
+    transform: translateY(2px);
+  } 
+
+
+
 .belowNav{
     background-color: #d3d0c3;
 }
@@ -130,6 +202,8 @@
 #youtube {
     width:55vw;
     height:30vw;
+    /* width:500px;
+    height:300px; */
 }
 
 .info{
@@ -154,6 +228,9 @@
     .topNews {
         margin-left: 10px;
     }
+    #chattingCol{
+        padding-left: 30px;
+    }
 
 }
 
@@ -162,14 +239,48 @@
      #youtube {
         width:100vw;
         height:70vw;
+        padding-left: 10px;
     } 
     .movieInfo {
         text-align: left;
         padding-left:25px;
         padding-right: 10px;
+        padding-left: 20px;
     }
     .topNews {
         margin-left: 10px;
+        padding-left: 20px;
     }
 
+    #chattingCol{
+        padding-left: 30px;
+    }
+
+
+
 }
+
+/* 
+.movieNewsContainer{
+    padding: 35px;
+}
+.movieNewsDate{
+    margin-top:20px;
+    font-size: 10px;
+    text-align: left;
+}
+.movieNewsImage{
+    width:280px;
+    height:200px;
+    text-align: left;
+}
+.movieNewsContent{
+    text-align: left;
+    margin-top:5px;
+    font-size: 12px;
+
+}
+.movieNewsTitle{
+    font-size: 12px;
+    text-align: left;
+} */

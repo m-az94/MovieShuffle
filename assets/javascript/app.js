@@ -84,6 +84,40 @@ $(document).ready(function(){
         
         
 
+                    // Initialize Firebase
+            var config = {
+                apiKey: "AIzaSyAQJ_F-7GSyLAbPYlgoVPaX15W_WJPYkcw",
+                authDomain: "topcreatorsproject1.firebaseapp.com",
+                databaseURL: "https://topcreatorsproject1.firebaseio.com",
+                projectId: "topcreatorsproject1",
+                storageBucket: "topcreatorsproject1.appspot.com",
+                messagingSenderId: "874107222924"
+            };
+            firebase.initializeApp(config);
+
+
+            var database = firebase.database();
+            var message = "";
+
+            $("#submitButton").on("click", function (event) {
+                event.preventDefault();
+                message = $("#inputText").val().trim();
+                database.ref().set({
+                message: message,
+                });
+            });
+
+
+            database.ref().on("value", function (snapshot) {
+                console.log(snapshot.val());
+                console.log(snapshot.val().message);
+                database.ref().set(snapshot.val().message);
+                $("#messageArea").prepend("<br>" + snapshot.val().message + "</br>");
+            }, function (errorObject) {
+                console.log("The read failed: " + errorObject.code);
+            });
+
+            // done Firebase
        
 
 
