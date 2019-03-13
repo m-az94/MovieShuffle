@@ -9,6 +9,8 @@
 .rightSide {
     padding-right: 0px;
     padding-left: 0px;
+    background-color: #d2d1cd;
+    
 }
 
 @font-face{
@@ -260,9 +262,11 @@ textarea{
 
 }
 
-/* 
+
 .movieNewsContainer{
     padding: 35px;
+    overflow-y: scroll;
+    height:586px;
 }
 .movieNewsDate{
     margin-top:20px;
@@ -283,4 +287,4 @@ textarea{
 .movieNewsTitle{
     font-size: 12px;
     text-align: left;
-} */
+} 

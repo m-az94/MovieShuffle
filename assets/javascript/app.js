@@ -4,18 +4,14 @@ var link ="";
 var resultId="";
 var title ="";
 
-    var newsURL="https://newsapi.org/v2/everything?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
-    var topNewsURL="https://newsapi.org/v2/top-headlines?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
-    var googleTopNews="https://newsapi.org/v2/top-headlines?country=ca&apiKey=cfa7c039edef460a8f6723558e31f499";
-    var searchTermNews="https://newsapi.org/v2/everything?q="+title+"&language=en&sortBy=relevancy&apiKey=7a70b0d355fc47d4a73c34f23bbb6db5";
-
 $(document).ready(function(){
+        $(".movieNewsContainer").hide();
 
          var images = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg'];
     
          $('#header').css({'background-image': 'url(assets/images/' + images[Math.floor(Math.random() * images.length)] + ')'});
        
-        addNews(newsURL,".topNews");
+        addNews();
 
         $("#nowPlaying").on("click",function(event){
             event.preventDefault();
@@ -39,22 +35,13 @@ $(document).ready(function(){
             });
         });
 
-            $(document).on("click",".nowPlayingButton",function(event){
-               // console.log(event);
-                playYoutube(event);
-                $(".topNews").empty();
-              // var movieNewsDiv =$("<div>");
-               title = event.currentTarget.value.toString().split(' ').join('+').trim();
-               searchTermNews="https://newsapi.org/v2/everything?q="+title+"&language=en&sortBy=relevancy&apiKey=7a70b0d355fc47d4a73c34f23bbb6db5";
-              // var whichButton= event.currentTarget.id.substring(10);
-              // var div =".movieInfo"+whichButton;
-               //console.log(title);
-               addNews(searchTermNews,".topNews")
-            //    $(".movieInfo").append(movieNewsDiv);
-            //    movieNewsDiv.text(addNews(searchTermNews,".movieInfo"));
-            //      movieNewsDiv.addClass("movieNews");
-                
-            });
+        $(document).on("click",".nowPlayingButton",function(event){
+            // console.log(event);
+             playYoutube(event);
+             $(".movieNewsContainer").show();
+             addQueryNews(event.toElement.innerHTML);
+             //console.log(event);         
+         });
         
 
 
@@ -62,6 +49,7 @@ $(document).ready(function(){
             event.preventDefault();
             $(".movieInfo").empty();
             $(".buttonBox").empty();
+            $(".movieNewsContainer").show();
 
             var title = $("#inputMovie").val();
            
@@ -125,16 +113,19 @@ $(document).ready(function(){
 });
 
 
-function addNews(news,whichDiv)
+function addNews()
 {
-   
+    var newsURL="https://newsapi.org/v2/everything?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
+    var topNewsURL="https://newsapi.org/v2/top-headlines?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
+    var googleTopNews="https://newsapi.org/v2/top-headlines?country=ca&apiKey=cfa7c039edef460a8f6723558e31f499";
+
     $.ajax({
-        url: news,
+        url: newsURL,
         method: "GET"
         })
         // We store all of the retrieved data inside of an object called "response"
         .then(function(response) {
-           // console.log(response);
+            console.log(response);
             
             
             for(var i=0;i<20;i++)
@@ -145,36 +136,92 @@ function addNews(news,whichDiv)
                 var newsImage=$("<img>");
                 var publish =$("<div>");
 
-                $(whichDiv).append(publish);
+                $(".topNews").append(publish);
                 var newsDate=response.articles[i].publishedAt;
                 var momentDate = moment(newsDate,'YYYY-MM-DD');
                 publish.text(momentDate.format('LL'));
                 publish.addClass("newsDate");
                 
 
-                $(whichDiv).append(newsDiv);
+                $(".topNews").append(newsDiv);
                 newsDiv.append(title);
                 newsDiv.addClass("newsDivTitle");
                 title.text(i+1+". "+response.articles[i].title);
                 title.attr("href",response.articles[i].url);
                
+               
                 
-                $(whichDiv).append(newsImage);
+                
+                $(".topNews").append(newsImage);
                 newsImage.addClass("newsImage");
                 newsImage.attr("src",response.articles[i].urlToImage);
 
-                $(whichDiv).append(content);
+                $(".topNews").append(content);
                 content.text(response.articles[i].content);
                 content.addClass("newsDivContent");
 
                 sticky();
-                
-
 
             }
 
         });
 }
+
+
+function addQueryNews(title)
+{
+    $(".movieNews").empty();
+    var queryNews="https://newsapi.org/v2/everything?q="+title+"&language=en&sortBy=relevancy&apiKey=7a70b0d355fc47d4a73c34f23bbb6db5";
+
+    $.ajax({
+        url: queryNews,
+        method: "GET"
+        })
+        // We store all of the retrieved data inside of an object called "response"
+        .then(function(response) {
+            console.log(response);
+            
+            for(var i=19;i>=0;i--)
+            {
+                var newsDiv =$("<div>");
+                var title =$("<a>");
+                var content = $("<div>");
+                var newsImage=$("<img>");
+                var publish =$("<div>");
+                var containerDiv=$("<div>");
+
+                $(containerDiv).prepend(content);
+                content.text(response.articles[i].content);
+                content.addClass("movieNewsContent");
+
+                $(containerDiv).prepend(newsDiv);
+                newsDiv.append(title);
+                newsDiv.addClass("movieNewsTitle");
+                title.text(i+1+". "+response.articles[i].title);
+                title.attr("href",response.articles[i].url);
+
+                $(containerDiv).prepend(publish);
+                var newsDate=response.articles[i].publishedAt;
+                var momentDate = moment(newsDate,'YYYY-MM-DD');
+                publish.text(momentDate.format('LL'));
+                publish.addClass("movieNewsDate");
+
+                $(".movieNews").prepend(containerDiv);
+                containerDiv.addClass("col-md-8");
+
+
+
+                $(".movieNews").prepend(newsImage);
+                newsImage.addClass("movieNewsImage");
+                newsImage.attr("src",response.articles[i].urlToImage);
+                newsImage.addClass("col-md-4");
+
+                sticky();
+
+            }
+
+        });
+    }
 
 
 function searchYoutube(search)
@@ -293,17 +340,3 @@ function sticky() {
     }
   }
 
-
-/* <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyAjOxb1aI7qoKCf---a-nkywc2oOXxov44",
-    authDomain: "movieshuffle-576b5.firebaseapp.com",
-    databaseURL: "https://movieshuffle-576b5.firebaseio.com",
-    projectId: "movieshuffle-576b5",
-    storageBucket: "movieshuffle-576b5.appspot.com",
-    messagingSenderId: "358540179940"
-  };
-  firebase.initializeApp(config);
-</script> */
