@@ -8,43 +8,35 @@ $(document).ready(function(){
         $(".movieNewsContainer").hide();
 
          var images = ['0.jpg', '1.jpg', '2.jpg', '3.jpg', '4.jpg'];
-    
+         var footerImages = ['5.jpg', '6.png', '7.jpg', '8.jpg', '9.jpg'];
          $('#header').css({'background-image': 'url(assets/images/' + images[Math.floor(Math.random() * images.length)] + ')'});
-       
+         $('#footer').css({'background-image': 'url(assets/images/' + footerImages[Math.floor(Math.random() * images.length)] + ')'});
         addNews();
-
+        //The function below adds Top 10 now playing movies right now
         $("#nowPlaying").on("click",function(event){
             event.preventDefault();
            $(".buttonBox").empty();
            $(".movieInfo").empty();
            
-            // Here we are building the URL we need to query the database
            var queryURL = "https://api.themoviedb.org/3/movie/now_playing?api_key="+APIKey+"&language=en-US&page=1";
           
-            // Here we run our AJAX call to the OpenWeatherMap API
             $.ajax({
             url: queryURL,
             method: "GET"
             })
-            // We store all of the retrieved data inside of an object called "response"
             .then(function(response) {
-                //console.log(response);
-                // Log the resulting object
-                //console.log(response.results[0].original_language);
                 addButtonsWithMovieInfo(response);
             });
         });
-
+        //The function below plays youtube video of clicked movie and adds news of that movie below
         $(document).on("click",".nowPlayingButton",function(event){
-            // console.log(event);
              playYoutube(event);
              $(".movieNewsContainer").show();
-             addQueryNews(event.toElement.innerHTML);
-             //console.log(event);         
+             addQueryNews(event.toElement.innerHTML);    
          });
         
 
-
+         //The function below adds max 10 buttons of movie searched in input bar 
         $("#searchButton").on("click",function(event){
             event.preventDefault();
             $(".movieInfo").empty();
@@ -52,17 +44,15 @@ $(document).ready(function(){
             $(".movieNewsContainer").show();
 
             var title = $("#inputMovie").val();
-           
+            addQueryNews(title);
             var queryURL = "https://api.themoviedb.org/3/search/movie?api_key="+APIKey+"&language=en-US&query="+title+"&page=1&include_adult=false";
 
             $.ajax({
                 url: queryURL,
                 method: "GET"
                 })
-                //We store all of the retrieved data inside of an object called "response"
                 .then(function(response) {
-                    //Log the resulting object
-                    //console.log(response.results[0].original_language);
+                    
                     addButtonsWithMovieInfo(response);
     
                 });
@@ -72,7 +62,7 @@ $(document).ready(function(){
         
         
 
-                    // Initialize Firebase
+        // The function below until addNews() adds chat box 
             var config = {
                 apiKey: "AIzaSyAQJ_F-7GSyLAbPYlgoVPaX15W_WJPYkcw",
                 authDomain: "topcreatorsproject1.firebaseapp.com",
@@ -104,15 +94,12 @@ $(document).ready(function(){
             }, function (errorObject) {
                 console.log("The read failed: " + errorObject.code);
             });
-
-            // done Firebase
        
-
 
     
 });
 
-
+//This function will add 20 ongoing news about tvshows and movies
 function addNews()
 {
     var newsURL="https://newsapi.org/v2/everything?sources=entertainment-weekly&apiKey=cfa7c039edef460a8f6723558e31f499";
@@ -123,7 +110,6 @@ function addNews()
         url: newsURL,
         method: "GET"
         })
-        // We store all of the retrieved data inside of an object called "response"
         .then(function(response) {
             console.log(response);
             
@@ -147,10 +133,7 @@ function addNews()
                 newsDiv.append(title);
                 newsDiv.addClass("newsDivTitle");
                 title.text(i+1+". "+response.articles[i].title);
-                title.attr("href",response.articles[i].url);
-               
-               
-                
+                title.attr("href",response.articles[i].url); 
                 
                 $(".topNews").append(newsImage);
                 newsImage.addClass("newsImage");
@@ -160,14 +143,12 @@ function addNews()
                 content.text(response.articles[i].content);
                 content.addClass("newsDivContent");
 
-                sticky();
-
             }
 
         });
 }
 
-
+//This function will add 20 movie news
 function addQueryNews(title)
 {
     $(".movieNews").empty();
@@ -177,7 +158,6 @@ function addQueryNews(title)
         url: queryNews,
         method: "GET"
         })
-        // We store all of the retrieved data inside of an object called "response"
         .then(function(response) {
             console.log(response);
             
@@ -209,27 +189,21 @@ function addQueryNews(title)
                 $(".movieNews").prepend(containerDiv);
                 containerDiv.addClass("col-md-8");
 
-
-
                 $(".movieNews").prepend(newsImage);
                 newsImage.addClass("movieNewsImage");
                 newsImage.attr("src",response.articles[i].urlToImage);
                 newsImage.addClass("col-md-4");
-
-                sticky();
 
             }
 
         });
     }
 
-
+//This function will search for trailer on youtube
 function searchYoutube(search)
 {
-   //var resultId="";
    var APIKey = "AIzaSyBtp6rXtBjreYY-3-sZ3LntzY6ptXDnhA8";
    var queryURL = "https://www.googleapis.com/youtube/v3/search?part=id&q="+search+"+trailer&type=video&key=" + APIKey;
-  // console.log(queryURL);
     $.ajax({
       url: queryURL,
       method: "GET"
@@ -242,7 +216,7 @@ function searchYoutube(search)
 
 }
 
-
+//This function will play youtube video
 function playYoutube(event) {
 
     var target = event.currentTarget.id;
@@ -261,10 +235,8 @@ function playYoutube(event) {
         if(response.results.length===0)
         {
              searchYoutube(movieName);
-            //console.log(resultId);
              link= "https://www.youtube.com/embed/"+resultId+"?autoplay=1";
              $("#youtube").attr("src",link);
-             //console.log("from youtube API");
         }else{
             youtubeId = response.results[0].key; 
              link = "https://www.youtube.com/embed/"+youtubeId+"?autoplay=1";
@@ -281,7 +253,7 @@ function playYoutube(event) {
 }
 
 
-
+//This function will add movie buttons from TMDB with its info
 function addButtonsWithMovieInfo(response) {
 
     var count =0;
@@ -332,11 +304,11 @@ function addButtonsWithMovieInfo(response) {
 }
 
 
-function sticky() {
-    if ($(".topNews").pageYOffset > sticky || $(".youtubeBox").pageYOffset > sticky ||$(".buttonBox").pageYOffset > sticky) {
-      header.classList.add("sticky");
-    } else {
-      header.classList.remove("sticky");
-    }
-  }
+// function sticky() {
+//     if ($(".topNews").pageYOffset > sticky || $(".youtubeBox").pageYOffset > sticky ||$(".buttonBox").pageYOffset > sticky) {
+//       header.classList.add("sticky");
+//     } else {
+//       header.classList.remove("sticky");
+//     }
+//   }
 

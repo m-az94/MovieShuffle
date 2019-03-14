@@ -177,9 +177,6 @@ textarea{
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #e4dfb4, 0 0 30px #dbd5b9, 0 0 40px #cfce98, 0 0 55px #cccb81, 0 0 75px #cfc886;
 } 
 
-#footer {
-    background-color: #c9c3ad;
-}
 
 #nowPlaying {
     margin-left:10px;
@@ -198,7 +195,23 @@ textarea{
 }
 
 #footer {
+
+    background: url(../images/) repeat center center; 
+    -webkit-background-size: contain;
+    -moz-background-size:  contain;
+    -o-background-size:  contain;
+    background-size:  contain;  
+    
     text-align: center;
+    font-size: 2vw;
+    color: #ffffff;
+    font-display: auto;
+    font-weight: bolder;
+    font-family: 'Neon', Impact, 'Haettenschweiler', 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ff0080, 0 0 30px #ff0080, 0 0 40px #ff0080, 0 0 55px #ff0080, 0 0 75px #ff0080;
+
+   
 }
 
 #youtube {
