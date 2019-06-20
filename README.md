@@ -1,6 +1,6 @@
 # Movie Shuffle
 
-We live in the information era. We don't need knowledge - we crave it! Captain America went on a twitter rampage? You need to know exactly what he said, how he said it, and everyone on the internet's opinion on it! That is why, we bring you the worlds newest niche market news outlet. Movie Shuffle - for the film fanatics! 
+We live in the information era. We don't need knowledge - we crave it! Captain America went on a twitter rampage? You need to know exactly what he said, how he said it, and how everyone on the internet responded to it! That is why, we bring you the worlds newest niche market news outlet. Movie Shuffle - for the film fanatics! 
 
 ## Technical Info
 
